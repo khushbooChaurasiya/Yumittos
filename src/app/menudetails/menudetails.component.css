@@ -1,0 +1,33 @@
+.card-img-top{
+    width:40%;
+    height: 40%;
+}
+/* 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+} */
+
+.navbar-fixed-bottom {
+    margin-top: 20px;
+}
+.navbar-fixed-top, .navbar-fixed-bottom {
+    position: static;
+}
+.navbar-fixed-bottom {
+    bottom: 0;
+}
+.navbar-fixed-top, .navbar-fixed-bottom {
+    left: 0;
+    margin-bottom: 0;
+    right: 0;
+    z-index: 1030;
+}
+.navbar {
+    overflow: visible;
+}

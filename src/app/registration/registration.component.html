@@ -1,0 +1,100 @@
+<!-- <div>
+    Username:<input type="text" [(ngModel)]="userName"/>
+    Password:<input type="password" [(ngModel)]="password"/>
+    Address:<input type="text" [(ngModel)]="address"/>
+    <button (click)="onRegister()">Sign up</button>
+</div> -->
+<!-- <form [formGroup]="registrationForm1">
+
+    <div class="form-group">
+        <label for="my-input">UserName:</label>
+        <input class="form-control" type="text" formControlName="userName" name="userName" required minlength="3">
+    </div>
+    <div *ngIf="registrationForm1.controls['userName'].invalid && registrationForm1.controls['userName'].touched">
+        <small *ngIf="registrationForm1.controls['userName'].errors?.['required']">Enter username name</small>
+        <small *ngIf="registrationForm1.controls['userName'].errors?.['minlength']">Enter username name atleast 3 character</small>
+    </div>
+   
+    <div class="form-group">
+        <label for="my-input">Password:</label>
+        <input class="form-control" type="text" formControlName="password" name="password" >
+        <div *ngIf="registrationForm1.controls['password'].invalid && registrationForm1.controls['password'].touched">
+            <small *ngIf="registrationForm1.controls['password'].errors?.['required']">Password must contain more than 8 characters, 1 upper case letter, and 1 special character</small>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="my-input">Address:</label>
+        <input class="form-control" type="text" formControlName="address" name="address">
+        <div *ngIf="registrationForm1.controls['address'].invalid && registrationForm1.controls['address'].touched">
+            <small *ngIf="registrationForm1.controls['address'].errors?.['required']">Please enter address</small>
+        </div>
+    </div>
+    <button (click)="onRegister()">SignUp</button>
+</form> -->
+
+
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+      <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+            The best offer <br />
+            <span style="color: hsl(218, 81%, 75%)">for your business</span>
+          </h1>
+          <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Temporibus, expedita iusto veniam atque, magni tempora mollitia
+            dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+            ab ipsum nisi dolorem modi. Quos?
+          </p>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+          <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+  
+          <div class="card bg-glass">
+            <div class="card-body px-4 py-5 px-md-5">
+              <form [formGroup]="registrationForm">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row">
+                  
+                  <div class="form-outline mb-3">
+                    <label class="form-label" for="form3Example4">Email Address</label>
+                      <input type="email" formControlName="email" [(ngModel)]="email" name="email" required class="form-control form-control-lg"
+                        placeholder="Enter email address" />
+                     
+                    </div>
+  
+                <!-- Email input -->
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="form3Example4">password</label>
+                    <input type="password" formControlName="password" [(ngModel)]="password" name="password" required class="form-control form-control-lg"
+                      placeholder="Enter password" />
+                   
+                  </div>
+  
+                <!-- Password input -->
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="form3Example4">Address</label>
+                    <input type="text" formControlName="address" [(ngModel)]="address" name="address" required class="form-control form-control-lg"
+                      placeholder="Enter address" />
+                   
+                  </div>
+  
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4" (click)="onRegister()">
+                  Sign up
+                </button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

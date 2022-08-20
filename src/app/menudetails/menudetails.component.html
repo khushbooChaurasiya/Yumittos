@@ -1,0 +1,32 @@
+
+<div>
+ <h3 style="color: lightgray;">|{{ProductTitleName}}</h3><br/>
+</div>
+<div class="row">
+  <div class="col col-md-5 row container-fluid" style="margin-right: unset;" *ngFor="let menulist of MenulistDetails">
+  <div style="margin-left: auto; height: 89%;"  class="card flex-md-row mb-4 shadow-sm h-md-250">
+     <div class="card-body d-flex flex-column align-items-start" >
+        <strong class="d-inline-block mb-2 text-primary">{{menulist.itemName}}</strong>
+        <p class="card-text"><img src="/assets/images/vagitarianLogo.png" alt="image" style="width: 20px;">&nbsp;{{menulist.vegan}}</p>
+        <p class="card-text">{{menulist.price|currency:'INR'}}</p>
+        <!-- <a class="nav-link" [routerLink]="'/fooddetails/'+menulist.itemName"> -->
+         <button (click)="AddCart(menulist.itemName)">Add to cart</button>
+      <!-- </a> -->
+     </div>
+     <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="{{menulist.img}}" style="width: 200px; height: 196px;">
+  </div>
+</div>
+</div>
+<!-- <p>  
+   <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"  
+           [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">  
+     Collapse Toggle  
+   </button>  
+ </p>  
+ <div id="collapseExample" [ngCollapse]="isCollapsed">  
+   <div class="card">  
+     <div class="card-body">  
+       By click on the Toggle Button, we can collapse this card. This example is from Javatpoint.com.  
+     </div>  
+   </div>  
+ </div>   -->

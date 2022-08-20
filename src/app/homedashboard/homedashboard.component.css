@@ -1,0 +1,13 @@
+li{
+    list-style: none;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    background-color: gray;
+}
+
+.card-img-top{
+    width:40%;
+    height: 40%;
+}

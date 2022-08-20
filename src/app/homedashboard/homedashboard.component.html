@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-left: 10%;">
+  <div class="container-fluid">
+   
+    <div class="collapse navbar-collapse" id="navbarNav" style="padding-left: 10%;">
+      <ul class="nav-item" class="navbar-nav">
+        <li *ngFor="let p of menulist">
+          <a class="nav-link" [routerLink]="'/productmenu/'+p">{{p}}</a>
+          
+      </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div>
+    <nav>
+        <li *ngFor="let p of menulist">
+            <a [routerLink]="'/productmenu/'+p">{{p}}</a> -->
+            <!-- <button type="button" (click)="onSelect(p)">{{p}}
+            </button> -->
+        <!-- </li>
+    </nav>
+</div> -->
+<br/>
+<!-- <div *ngIf="!isSelect==false">   -->
+<!-- <div class="row">
+    <div class="col-sm-6">
+      <div class="card" style="width: 18rem;" *ngFor="let menulist of menuListByCategoryName">
+        <img class="card-img-top" src={{menulist.img}} alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{menulist.itemName}}</h5>
+          <p class="card-text">{{menulist.vegan}}</p>
+          <p class="card-text">{{menulist.price|currency:'INR'}}</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<!-- </div> -->
+<router-outlet></router-outlet>
+
