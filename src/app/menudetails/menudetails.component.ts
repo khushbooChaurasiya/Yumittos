@@ -35,7 +35,11 @@ export class MenudetailsComponent implements OnInit {
   
     ngOnInit() {
       this.getMenuInfo();
-    
+      $( "#clickme" ).click(function() {
+        $( "#collapseExample" ).toggle( "slow", function() {
+          // Animation complete.
+        });
+      }); 
   }
   getMenuInfo()
   {
