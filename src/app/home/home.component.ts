@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { LoginService } from '../services/login.service';
+import $ from 'jquery';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +9,7 @@ import { LoginService } from '../services/login.service';
 export class HomeComponent implements OnInit {
   ngOnInit() {
     
+    $(".page-footer").removeAttr("style");
   }
   
 }

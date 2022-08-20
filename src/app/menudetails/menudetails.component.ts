@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuService } from '../services/menu.service';
 import { HttpClient } from '@angular/common/http';
+import $ from 'jquery';
 
 interface CartInfo { 
   email:string; 
@@ -24,13 +25,13 @@ export class MenudetailsComponent implements OnInit {
   menulist:any;
   MenulistDetails:any=[];
   ProductTitleName: any;
-  TotalCart : number=0;
-  Totalprice:any="";
+  Totalprice:number=0;
   productname:any;
   ItemDetails:any=[];
+  Subtotal:number=0;
 
 
-  constructor(private service:MenuService,private router:ActivatedRoute, private httpClient: HttpClient) { }
+  constructor(private service:MenuService,private router:ActivatedRoute, private httpClient: HttpClient, ) { }
   
     ngOnInit() {
       this.getMenuInfo();
@@ -66,6 +67,8 @@ export class MenudetailsComponent implements OnInit {
   AddCart(product:any)
   {
       debugger;
+      $("#cartdetails").removeAttr("style");
+      $(".page-footer").css("display","none");
       var parameterData="";
       this.service.getProduct().subscribe((data)=>{
         this.products=data;
@@ -90,6 +93,10 @@ export class MenudetailsComponent implements OnInit {
               break;
             }
           }
+
+          this.Subtotal = this.Subtotal +1;
+          this.Totalprice = this.Totalprice + this.ItemDetails.price;
+
           var jsonData ={
             email:"",
             id:this.ItemDetails.id,
@@ -97,11 +104,16 @@ export class MenudetailsComponent implements OnInit {
             quntity: this.ItemDetails.quantity,
             status:"pending"
           }
-          this.service.postCartsDetaild(jsonData).subscribe((data)=>{
-            debugger;
-           console.log(data);
-          })
+          // this.service.postCartsDetaild(jsonData).subscribe((data)=>{
+          //   debugger;
+          //  console.log(data);
+          // })
         });
        
+  }
+
+  ContinueAddCart()
+  {
+
   }
 }
