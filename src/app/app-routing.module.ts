@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGaurdGuard } from './auth-gaurd.guard';
+import { ContactusComponent } from './contactus/contactus.component';
 import { FoodDetailsComponent } from './food-details/food-details.component';
 import { HomeComponent } from './home/home.component';
 import { HomedashboardComponent } from './homedashboard/homedashboard.component';
@@ -10,12 +11,10 @@ import { MenudetailsComponent } from './menudetails/menudetails.component';
 import { RegistrationComponent } from './registration/registration.component';
 
 
-const routes: Routes = [{
+const routes: Routes = [
+{
   path:"login", component:LoginComponent
  
-},
-{
-  path:"home", component:HomeComponent
 },
 {
   path:"signup",component:RegistrationComponent
@@ -30,6 +29,9 @@ const routes: Routes = [{
 },
 {
 path:"fooddetails/:titlename", component:FoodDetailsComponent
+},
+{
+path:"contactus", component:ContactusComponent
 },
 {
   path:"**", component:HomeComponent

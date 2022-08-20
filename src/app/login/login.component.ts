@@ -6,7 +6,7 @@ import { LoginService } from '../services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styles:[`input.ng-valid{border:1px solid green}`]
 })
 export class LoginComponent implements OnInit {
   email:any="";

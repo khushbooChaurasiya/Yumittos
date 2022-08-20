@@ -11,6 +11,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HomedashboardComponent } from './homedashboard/homedashboard.component';
 import { MenudetailsComponent } from './menudetails/menudetails.component';
 import { FoodDetailsComponent } from './food-details/food-details.component';
+import { AboutComponent } from './about/about.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 
 @NgModule({
@@ -22,6 +26,10 @@ import { FoodDetailsComponent } from './food-details/food-details.component';
     HomedashboardComponent,
     MenudetailsComponent,
     FoodDetailsComponent,
+    AboutComponent,
+    HeaderComponent,
+    FooterComponent,
+    ContactusComponent,
   ],
   imports: [
     BrowserModule,

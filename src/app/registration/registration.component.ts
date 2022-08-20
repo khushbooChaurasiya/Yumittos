@@ -6,8 +6,7 @@ import { LoginService } from '../services/login.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styles:[`input.ng-invalid{border:1px solid red}
-  input.ng-valid{border:1px solid green}`]
+  styles:[`input.ng-valid{border:1px solid green}`]
 })
 export class RegistrationComponent implements OnInit {
 address:any="";

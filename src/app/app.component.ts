@@ -13,20 +13,20 @@ export class AppComponent {
   emailId:any="";
 
   constructor(private service:LoginService, private route:Router){
-    debugger;
-   this.emailId = localStorage.getItem('email');
-   if(this.emailId != "" && this.emailId != null)
-   {
-    this.isUserLoggedIn= true;
-   }
+  //   debugger;
+  //  this.emailId = localStorage.getItem('email');
+  //  if(this.emailId != "" && this.emailId != null)
+  //  {
+  //   this.isUserLoggedIn= true;
+  //  }
 
   }
   
-  Logout(){
-    localStorage.removeItem('email');
-    this.service.logoutUser();
-    this.route.navigate(["/home"]);
-    this.isUserLoggedIn = false;
-  }
+  // Logout(){
+  //   localStorage.removeItem('email');
+  //   this.service.logoutUser();
+  //   this.route.navigate(["/home"]);
+  //   this.isUserLoggedIn = false;
+  // }
   
 }
