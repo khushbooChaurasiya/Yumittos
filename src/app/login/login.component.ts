@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   users:any="";
   mailid: string="";
   error: any;
-  cartPending:any=[];
+  cartPending:any="";
     constructor(private service:LoginService,private route:ActivatedRoute,private router:Router,private fb:FormBuilder, private sar : MenuService) { }
   
     LoginForm=this.fb.group({
@@ -44,11 +44,12 @@ export class LoginComponent implements OnInit {
          if(d == true){
             if(this.retUrl!=null){
 
-            // this.sar.getCartDetails().subscribe((data)=>{
-            //   console.log(data);
-            //   this.cartPending = data;
-              
-            // });
+            this.sar.getCartDetails().subscribe((data)=>{
+              console.log(data);
+              this.cartPending = data;
+            var cartd = this.cartPending.find((a: { status: string; })=>a.status == "pending");
+            console.log(cartd);
+            });
 
               this.router.navigate([this.retUrl]);
               localStorage.setItem('email', this.email);
