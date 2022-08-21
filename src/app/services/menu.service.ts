@@ -18,4 +18,10 @@ export class MenuService {
     debugger;
     return this.client.post("http://localhost:3000/carts",body);
   }
+
+  getCartDetails()
+  {
+    return this.client.get("http://localhost:3000/carts");
+  }
+
 }

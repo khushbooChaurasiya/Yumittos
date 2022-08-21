@@ -1,14 +1,16 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuService } from '../services/menu.service';
 import { HttpClient } from '@angular/common/http';
 import $ from 'jquery';
+import { LoginService } from '../services/login.service';
 
 interface CartInfo { 
   email:string; 
   id: Number;  
   itemName: String;  
+  price:Number;
   quntity: String;  
   status:string;
 }  
@@ -29,9 +31,14 @@ export class MenudetailsComponent implements OnInit {
   productname:any;
   ItemDetails:any=[];
   Subtotal:number=0;
+  emailId:any="";
+  isUserLoggedIn:boolean=false;
+  itemDisplay:any=[];
+  Price:number=0;
+displayDetails :any =[];
+  totalPrice:number =0;
 
-
-  constructor(private service:MenuService,private router:ActivatedRoute, private httpClient: HttpClient, ) { }
+  constructor(private service:MenuService,private router:ActivatedRoute, private httpClient: HttpClient, private ser : LoginService, private route:Router ) { }
   
     ngOnInit() {
       this.getMenuInfo();
@@ -76,48 +83,66 @@ export class MenudetailsComponent implements OnInit {
       var parameterData="";
       this.service.getProduct().subscribe((data)=>{
         this.products=data;
-          for(var i = 0; i<this.products.length; i++){
-            for(var index = 0; index<this.products[i].items.length; index++)
-            {
-              if(this.products[index].title=product)
-              {
-                  this.finalproduct = this.products[index].items;
-                  for(var j=0; j<this.finalproduct.length; j++){
-  
-                    if(product == this.finalproduct[j].itemName)
-                    {
-                      this.ItemDetails = this.finalproduct[j];
-                      
-                      
-                      break;
-                    }
-                  }
-                  
-              }
-              break;
-            }
-          }
 
-          this.Subtotal = this.Subtotal +1;
-          this.Totalprice = this.Totalprice + this.ItemDetails.price;
+        this.finalproduct = this.products.filter((x: { category: any; })=> x.category == this.ProductTitleName);
+        this.ItemDetails =this.finalproduct.find((a: { items: any; })=>a.items).items.filter((y: { itemName: any; })=>y.itemName == product);
+        this.Subtotal = this.Subtotal +1;
+        this.Totalprice = this.Totalprice + this.ItemDetails[0].price;
 
-          var jsonData ={
-            email:"",
-            id:this.ItemDetails.id,
-            itemName: this.ItemDetails.itemName,
-            quntity: this.ItemDetails.quantity,
-            status:"pending"
-          }
-          // this.service.postCartsDetaild(jsonData).subscribe((data)=>{
-          //   debugger;
-          //  console.log(data);
-          // })
-        });
+        var jsonData ={
+          email:"",
+          id:this.ItemDetails[0].id,
+          itemName: this.ItemDetails[0].itemName,
+          price : this.ItemDetails[0].price,
+          quntity: 1,
+          status:"pending"
+        }
+        
+    this.itemDisplay.push(jsonData);
+    this.service.postCartsDetaild(jsonData).subscribe((data)=>{
+      debugger;
+     console.log(data);
+    });
+
+  });
        
   }
 
   ContinueAddCart()
   {
+    this.emailId = localStorage.getItem('email');
+    if(this.emailId != "" && this.emailId != null)
+    {
+     this.isUserLoggedIn= true;
+    }
+    else
+    {
+      this.route.navigate(["login"]);
+    }
+  }
+  increase_quantity(temp_package:any){
+    debugger;
+    if(temp_package.limit == temp_package.quantity){
+      return alert("Can't add more")
+    }else{
+      temp_package.quantity++
+      this.Price += temp_package.price
+    }
+  }
 
+  decrease_quantity(temp_package:any){
+    debugger;
+      if(temp_package.quantity == 0){
+        return alert("can't be in minus")
+      }
+      temp_package.quantity--
+      this.Price -= temp_package.price
+  }
+  countPrice(a:any){
+    debugger;
+     this.Price = 0;
+      for(let p of this.itemDisplay){
+        this.Price += p.price*p.quantity
+      }
   }
 }

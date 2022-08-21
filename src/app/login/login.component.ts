@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   users:any="";
   mailid: string="";
   error: any;
-    constructor(private service:LoginService,private route:ActivatedRoute,private router:Router,private fb:FormBuilder) { }
+    constructor(private service:LoginService,private route:ActivatedRoute,private router:Router,private fb:FormBuilder, private sar : MenuService) { }
   
     LoginForm=this.fb.group({
       email:["",[Validators.required]],
@@ -41,7 +42,12 @@ export class LoginComponent implements OnInit {
         this.service.login(this.email,this.password, this.mailid).subscribe((d)=>{
          if(d == true){
             if(this.retUrl!=null){
-              alert("Login sucessfully");
+
+            // this.sar.getCartDetails().subscribe((data)=>{
+            //   // data.find(a=>a.status == "pending");
+              
+            // });
+
               this.router.navigate([this.retUrl]);
               localStorage.setItem('email', this.email);
             }

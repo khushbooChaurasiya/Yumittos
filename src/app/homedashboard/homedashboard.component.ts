@@ -12,10 +12,6 @@ menulist:any;
 menuListByCategoryName:any="";
 isSelect:boolean=false;
 
-
-
-
-
 constructor(private service:MenuService) { }
 
 ngOnInit(): void {

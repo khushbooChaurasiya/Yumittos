@@ -435,12 +435,6 @@
     }
   ],
   "carts": [
-    {
-      "email": "",
-      "id": 3,
-      "itemName": "Masala Dosa",
-      "quntity": 0,
-      "status": "pending"
-    }
+   
   ]
 }

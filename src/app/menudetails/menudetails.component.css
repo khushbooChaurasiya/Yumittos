@@ -31,3 +31,7 @@
 .navbar {
     overflow: visible;
 }
+
+#addscroll{
+    overflow-y: scroll !important;
+}
