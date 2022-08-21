@@ -12,7 +12,7 @@
         <p class="card-text" *ngIf="menulist.vegan == 'veg'"><img src="/assets/images/vagitarianLogo.png" alt="image" style="width: 20px;">&nbsp;{{menulist.vegan}}</p>
         <p class="card-text">{{menulist.price|currency:'INR'}}</p>
         <!-- <a class="nav-link" [routerLink]="'/fooddetails/'+menulist.itemName"> -->
-         <button id="Addtocart" (click)="AddCart(menulist.itemName)">Add to cart</button>
+         <button id="Addtocart" class="btn btn-primary" (click)="AddCart(menulist.itemName)"><i class="fa fa-shopping-cart"></i> Add to cart</button>
       <!-- </a> -->
      </div>
      <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="{{menulist.img}}" style="width: 200px; height: 196px;">
@@ -40,12 +40,13 @@
 
   <div id="collapseExample" style="background-color: rgba(0, 0, 0, 0.05);">   
     <div class="card" id="addscroll">  
-      <div class="card-body" *ngFor="let a of itemDisplay">  
-        <p class="card-text">{{a.itemName}}</p>
-        <p class="card-text">{{a.price}}</p>
-        <p class="card-text"> Total : {{a.quantity*a.price}}</p>
-        <div class="container quantity-spinner-wrap">
-          <div class="col-md-2">
+      <div class="card-body row text-center col-md-12" *ngFor="let a of itemDisplay">  
+        <div class="col-md-2"> <p class="card-text">{{a.itemName}}</p></div>
+       <div  class="col-md-2">  <i class="fa fa-inr"></i> {{a.price}}</div>
+         <div  class="col-md-2">   <p class="card-text"> Total : {{a.quantity * a.price}}</p></div>
+     
+        <div class="container quantity-spinner-wrap col-md-2">
+          <div class="col-md-12">
             <div class="input-group number-spinner">
               <span class="input-group-btn">
                 <button class="btn btn-default" data-dir="dwn" (click)="decrease_quantity(a)">
@@ -61,7 +62,7 @@
             </div>
           </div>
         </div>
-        <button style="width: 7%;" class="btn btn-danger" (click)="DeleteCart(a.id)">Delete</button>
+        <button class="btn btn-danger col-md-1" (click)="DeleteCart(a.id)"><i class="fa fa-trash"></i> Delete</button>
       </div>  
       
     </div>  
