@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   users:any="";
   mailid: string="";
   error: any;
+  cartPending:any=[];
     constructor(private service:LoginService,private route:ActivatedRoute,private router:Router,private fb:FormBuilder, private sar : MenuService) { }
   
     LoginForm=this.fb.group({
@@ -44,7 +45,8 @@ export class LoginComponent implements OnInit {
             if(this.retUrl!=null){
 
             // this.sar.getCartDetails().subscribe((data)=>{
-            //   // data.find(a=>a.status == "pending");
+            //   console.log(data);
+            //   this.cartPending = data;
               
             // });
 

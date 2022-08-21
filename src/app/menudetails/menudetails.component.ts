@@ -11,6 +11,7 @@ interface CartInfo {
   id: Number;  
   itemName: String;  
   price:Number;
+  totalPrice: number;
   quntity: String;  
   status:string;
 }  
@@ -94,6 +95,7 @@ displayDetails :any =[];
           id:this.ItemDetails[0].id,
           itemName: this.ItemDetails[0].itemName,
           price : this.ItemDetails[0].price,
+          totalPrice: 0,
           quntity: 1,
           status:"pending"
         }
@@ -104,22 +106,9 @@ displayDetails :any =[];
      console.log(data);
     });
 
-  });
-       
+  });     
   }
-
-  ContinueAddCart()
-  {
-    this.emailId = localStorage.getItem('email');
-    if(this.emailId != "" && this.emailId != null)
-    {
-     this.isUserLoggedIn= true;
-    }
-    else
-    {
-      this.route.navigate(["login"]);
-    }
-  }
+  
   increase_quantity(temp_package:any){
     debugger;
     if(temp_package.limit == temp_package.quantity){
@@ -140,9 +129,52 @@ displayDetails :any =[];
   }
   countPrice(a:any){
     debugger;
-     this.Price = 0;
-      for(let p of this.itemDisplay){
-        this.Price += p.price*p.quantity
-      }
+     
+        this.Price = 0;
+        this.Price += a.price*a.quantity
+
+        this.service.getCartDetailsById(a.id).subscribe((data)=>{
+          var updateJsonData ={
+              email:"",
+              id:a.id,
+              itemName: a.itemName,
+              price : a.price,
+              totalPrice : this.Price,
+              quntity: a.quantity,
+              status:"pending"
+          }
+
+          this.service.cartDelete(a.id)
+          .subscribe(data=>{
+            this.service.postCartsDetaild(updateJsonData).subscribe((data)=>{
+              debugger;
+             console.log(data);
+            });
+          });
+         
+
+        });
+      
+  }
+
+  DeleteCart(Id:string){
+    debugger;
+    this.service.cartDelete(Id)
+    .subscribe(data=>{
+      console.log(data);
+    })
+  }
+
+  ContinueAddCart()
+  {
+    this.emailId = localStorage.getItem('email');
+    if(this.emailId != "" && this.emailId != null)
+    {
+     this.isUserLoggedIn= true;
+    }
+    else
+    {
+      this.route.navigate(["login"]);
+    }
   }
 }
