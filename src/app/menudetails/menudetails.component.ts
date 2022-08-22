@@ -99,6 +99,7 @@ displayDetails :any =[];
         this.Subtotal = this.Subtotal +1;
         this.Totalprice = this.Totalprice + this.ItemDetails[0].price;
         var emailid = localStorage.getItem("email");
+        debugger;
         if(emailid != null && emailid != "" && emailid != undefined)
         {
           this.Pendingstatus = "Delivery Pending";
@@ -135,7 +136,7 @@ displayDetails :any =[];
 
     this.service.getCartDetailsById(a.id).subscribe((data)=>{
       var emailid = localStorage.getItem("email");
-
+debugger;
       if(emailid != null && emailid != "" && emailid != undefined)
       {
         this.Pendingstatus = "Delivery Pending";
