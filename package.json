@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
+    "angular-material-rail-drawer": "^1.1.4",
     "bootstrap": "^5.2.0",
     "file-saver": "^2.0.5",
     "jquery": "^3.6.0",

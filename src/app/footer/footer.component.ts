@@ -10,12 +10,7 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-      $("#divHide").removeAttr("style");
-    });
+  ngOnInit(): void {
   }
 
 }

@@ -14,6 +14,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { CartdetailsComponent } from './cartdetails/cartdetails.component';
+import { MaterialModule } from './material/material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -30,13 +32,14 @@ import { CartdetailsComponent } from './cartdetails/cartdetails.component';
     CartdetailsComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    MaterialModule,    
   ],
   providers: [],
   bootstrap: [AppComponent],
