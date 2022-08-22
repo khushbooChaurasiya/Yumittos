@@ -38,6 +38,13 @@ export class MenudetailsComponent implements OnInit {
   Price:number=0;
 displayDetails :any =[];
   totalPrice:number =0;
+  qtytotal:any;
+
+  qty = [
+    1,2,3,4,5,6,7,8,9,10
+  ]
+  selected = "  "
+  
 
   constructor(private service:MenuService,private router:ActivatedRoute, private httpClient: HttpClient, private ser : LoginService, private route:Router ) { }
   
@@ -83,15 +90,16 @@ displayDetails :any =[];
       $(".page-footer").css("display","none");
       var parameterData="";
       this.service.getProduct().subscribe((data)=>{
+        this.Totalprice = 0;
         this.products=data;
 
         this.finalproduct = this.products.filter((x: { category: any; })=> x.category == this.ProductTitleName);
         this.ItemDetails =this.finalproduct.find((a: { items: any; })=>a.items).items.filter((y: { itemName: any; })=>y.itemName == product);
         this.Subtotal = this.Subtotal +1;
         this.Totalprice = this.Totalprice + this.ItemDetails[0].price;
-
+        var emailid = localStorage.getItem("email");
         var jsonData ={
-          email:"",
+          email:emailid,
           id:this.ItemDetails[0].id,
           itemName: this.ItemDetails[0].itemName,
           price : this.ItemDetails[0].price,
@@ -108,57 +116,38 @@ displayDetails :any =[];
 
   });     
   }
-  
-  increase_quantity(temp_package:any){
-    debugger;
-    if(temp_package.limit == temp_package.quantity){
-      return alert("Can't add more")
-    }else{
-      temp_package.quantity++
-      this.Price += temp_package.price
-    }
-  }
 
-  decrease_quantity(temp_package:any){
+  update(e:any, a:any){
     debugger;
-      if(temp_package.quantity == 0){
-        return alert("can't be in minus")
+    this.selected = e.target.value;
+    this.qtytotal=this.selected;
+    
+    this.Price = 0;
+    this.Price += a.price* this.qtytotal
+
+    this.service.getCartDetailsById(a.id).subscribe((data)=>{
+      var emailid = localStorage.getItem("email");
+      var updateJsonData ={
+          email:emailid,
+          id:a.id,
+          itemName: a.itemName,
+          price : a.price,
+          totalPrice : this.Price,
+          quntity: this.selected,
+          status:"pending"
       }
-      temp_package.quantity--
-      this.Price -= temp_package.price
-  }
-  countPrice(a:any){
-    debugger;
-     
-        this.Price = 0;
-        this.Price += a.price*a.quantity
 
-        this.service.getCartDetailsById(a.id).subscribe((data)=>{
-          var updateJsonData ={
-              email:"",
-              id:a.id,
-              itemName: a.itemName,
-              price : a.price,
-              totalPrice : this.Price,
-              quntity: a.quantity,
-              status:"pending"
-          }
-
-          this.service.cartDelete(a.id)
-          .subscribe(data=>{
-            this.service.postCartsDetaild(updateJsonData).subscribe((data)=>{
-              debugger;
-             console.log(data);
-            });
-          });
-         
-
+      this.service.cartDelete(a.id).subscribe((res)=>{
+        this.service.postCartsDetaild(updateJsonData).subscribe((response)=>{
+         console.log(response);
         });
-      
+      });
+
+    });
+ 
   }
 
   DeleteCart(Id:string){
-    debugger;
     this.service.cartDelete(Id)
     .subscribe(data=>{
       console.log(data);
@@ -171,6 +160,7 @@ displayDetails :any =[];
     if(this.emailId != "" && this.emailId != null)
     {
      this.isUserLoggedIn= true;
+     this.route.navigate(["checkout"]);
     }
     else
     {

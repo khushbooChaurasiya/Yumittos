@@ -16,6 +16,9 @@
           <li class="nav-item" *ngIf="!isUserLoggedIn==true">
             <a class="nav-link" routerLink="signup">Sign up</a>
           </li>
+          <li class="nav-item" *ngIf="!isUserLoggedIn==false">
+            <a class="nav-link" routerLink="checkout">Cart</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="*" (click)="Logout()" *ngIf="!isUserLoggedIn==false">Logout</a>
           </li>

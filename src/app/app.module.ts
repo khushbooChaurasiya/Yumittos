@@ -10,11 +10,10 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HomedashboardComponent } from './homedashboard/homedashboard.component';
 import { MenudetailsComponent } from './menudetails/menudetails.component';
-import { FoodDetailsComponent } from './food-details/food-details.component';
-import { AboutComponent } from './about/about.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { CartdetailsComponent } from './cartdetails/cartdetails.component';
 
 
 @NgModule({
@@ -25,11 +24,10 @@ import { ContactusComponent } from './contactus/contactus.component';
     HomeComponent,
     HomedashboardComponent,
     MenudetailsComponent,
-    FoodDetailsComponent,
-    AboutComponent,
     HeaderComponent,
     FooterComponent,
     ContactusComponent,
+    CartdetailsComponent,
   ],
   imports: [
     BrowserModule,

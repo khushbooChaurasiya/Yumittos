@@ -1,0 +1,29 @@
+<table>
+    <thead>
+<th>Status</th>
+<!-- <th>Payment mode</th>
+<th>Order time</th> -->
+<th>Delivery to</th>
+    </thead>
+    <tbody>
+        <td>{{orderD.status}}</td>
+        <td>{{orderD.email}}</td>
+    </tbody>
+</table>
+<table>
+    <thead>
+        <th>Item Name</th>
+        <th>Item Price</th>
+        <th>Quantity</th>
+        <th>Amount</th>
+    </thead>
+    <tbody *ngFor="let d of cartd">
+        <td>{{d.itemName}}</td>
+        <td>{{d.price}}</td>
+        <td>{{d.quntity}}</td>
+        <td>{{d.totalPrice}}</td>
+    </tbody>
+</table>
+<hr>
+<p>Subtotal: </p>
+<p>Delivery Charges: </p>

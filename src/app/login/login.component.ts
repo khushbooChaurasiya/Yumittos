@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { LoginService } from '../services/login.service';
 import { MenuService } from '../services/menu.service';
 
@@ -43,15 +44,30 @@ export class LoginComponent implements OnInit {
         this.service.login(this.email,this.password, this.mailid).subscribe((d)=>{
          if(d == true){
             if(this.retUrl!=null){
-
-            // this.sar.getCartDetails().subscribe((data)=>{
-            //   console.log(data);
-            //   this.cartPending = data;
+              localStorage.setItem('email', this.email);
+            this.sar.getCartDetails().subscribe((cartdata)=>{
+              this.cartPending = cartdata;
+              var cartd = this.cartPending.filter((x: { status: string; })=>x.status == "pending");
               
-            // });
+              for(var i=0; i<cartd.length; i++)
+              {
+                  var cartInfo = cartd[i];
+                  var updateJsonData ={
+                    email: localStorage.getItem('email'),
+                    id:cartInfo.id,
+                    itemName: cartInfo.itemName,
+                    price : cartInfo.price,
+                    totalPrice : cartInfo.quntity * cartInfo.price,
+                    quntity: cartInfo.quntity,
+                    status:"Delivery Pending"
+                }
+                this.deleteCartDetails(updateJsonData);
+                
+             }
+            });
 
               this.router.navigate([this.retUrl]);
-              localStorage.setItem('email', this.email);
+              
             }
             else{
               this.router.navigate(["home"]);
@@ -65,6 +81,15 @@ export class LoginComponent implements OnInit {
         }, (err) => {
           this.error = err.message;
           console.log(err.message);});
+      });
+    }
+
+    deleteCartDetails(updateJsonData:any)
+    {
+      this.sar.cartDelete(updateJsonData.id).subscribe((res)=>{
+        this.sar.postCartsDetaild(updateJsonData).subscribe((response)=>{
+         console.log(response);
+        });
       });
     }
 }

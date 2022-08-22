@@ -43,25 +43,21 @@
       <div class="card-body row text-center col-md-12" *ngFor="let a of itemDisplay">  
         <div class="col-md-2"> <p class="card-text">{{a.itemName}}</p></div>
        <div  class="col-md-2">  <i class="fa fa-inr"></i> {{a.price}}</div>
-         <div  class="col-md-2">   <p class="card-text"> Total : {{a.quantity * a.price}}</p></div>
+         <div  class="col-md-2">   <p class="card-text"> Total : {{Price}}</p></div>
      
         <div class="container quantity-spinner-wrap col-md-2">
           <div class="col-md-12">
             <div class="input-group number-spinner">
-              <span class="input-group-btn">
-                <button class="btn btn-default" data-dir="dwn" (click)="decrease_quantity(a)">
-                  <span class="glyphicon glyphicon-minus">-</span>
-                </button>
-              </span>
-              <input type="text" class="form-control text-center" [(ngModel)]="a.quantity" (change)="countPrice(a)">
-              <span class="input-group-btn">
-                <button class="btn btn-default" data-dir="up" (click)="increase_quantity(a)" >
-                  <span class="glyphicon glyphicon-plus">+</span>
-                </button>
-              </span>
-            </div>
-          </div>
-        </div>
+            <select (change)="update($event, a)">
+                <option value="default"></option>
+                <option *ngFor="let q of qty" [value]="q">
+                    {{q}}
+                </option>
+            </select>
+      </div>
+    </div>
+    </div>
+
         <button class="btn btn-danger col-md-1" (click)="DeleteCart(a.id)"><i class="fa fa-trash"></i> Delete</button>
       </div>  
       
