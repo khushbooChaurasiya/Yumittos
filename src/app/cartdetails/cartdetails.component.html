@@ -1,29 +1,97 @@
-<table>
-    <thead>
-<th>Status</th>
-<!-- <th>Payment mode</th>
-<th>Order time</th> -->
-<th>Delivery to</th>
-    </thead>
-    <tbody>
-        <td>{{orderD.status}}</td>
-        <td>{{orderD.email}}</td>
-    </tbody>
-</table>
-<table>
-    <thead>
-        <th>Item Name</th>
-        <th>Item Price</th>
-        <th>Quantity</th>
-        <th>Amount</th>
-    </thead>
-    <tbody *ngFor="let d of cartd">
-        <td>{{d.itemName}}</td>
-        <td>{{d.price}}</td>
-        <td>{{d.quntity}}</td>
-        <td>{{d.totalPrice}}</td>
-    </tbody>
-</table>
-<hr>
-<p>Subtotal: </p>
-<p>Delivery Charges: </p>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container" style='height: 100%; width: 100%; object-fit: contain'>
+                <!-- <img src="/assets/images/restaurant.jpg"/> -->
+            </div>
+           
+        </div>
+       <div class="col-md-6 mt-2">
+
+            <div class="text-start text-black p-4 border mb-3">
+                <h4 class="" style="color: #35558a;">Thanks For Your Order.WE will reach you soon with your delicious food </h4>
+            </div>
+            
+            <div class="text-start text-black p-4 border ex1" >
+               
+                <h4 class="mb-0" style="color: #35558a;">Order Details</h4>
+                <div>
+                <hr class="mt-2 mb-4"
+                  style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
+
+                <div class="card-body mb-3">
+
+                    <div class="d-flex justify-content-between">
+                        <p class="fw-bold mb-0">Status</p>
+                        <p class="text-muted mb-0">{{orderD.status}}</p>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <p class="fw-bold mb-0">Delivery to:</p>
+                        <p class="text-muted mb-0">{{orderD.email}}</p>
+                      </div>
+                  
+                </div>
+
+                <h4 class="mb-0" style="color: #35558a;">Order Summary</h4>
+                <div>
+                <hr class="mt-2 mb-4"
+                  style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
+
+
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                        <h5 class="mb-1">Item Name</h5>
+                      </div>
+                      <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                        <h5 class=" mb-1 ">Item Price</h5>
+                      </div>
+                      <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                        <h5 class=" mb-1 ">Quantity</h5>
+                      </div>
+                      <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                        <h5 class="mb-1 ">Amount</h5>
+                      </div>
+                    </div>
+
+                    <div class="row mt-3" *ngFor="let d of cartd">
+                        <div class="col-md-3 mb-1 text-center d-flex justify-content-center align-items-center">
+                          <p class="text-muted mb-0">{{d.itemName}}</p>
+                        </div>
+                        <div class="col-md-3 mb-1 text-center d-flex justify-content-center align-items-center">
+                          <p class="text-muted mb-0 small">{{d.price}}</p>
+                        </div>
+                        <div class="col-md-3 mb-1 text-center d-flex justify-content-center align-items-center">
+                          <p class="text-muted mb-0 small">{{d.quntity}}</p>
+                        </div>
+                        <div class="col-md-3 mb-1 text-center d-flex justify-content-center align-items-center">
+                          <p class="text-muted mb-0 small">{{d.totalPrice}}</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between">
+                        <p class="fw-bold mb-0">Subtotal :</p>
+                        <p class="text-muted mb-0">0</p>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <p class="fw-bold mb-0">Delivery Charges :</p>
+                        <p class="text-muted mb-0">0</p>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <p class="fw-bold mb-0">Total Amount :</p>
+                        <p class="text-muted mb-0">0</p>
+                      </div>
+                   </div>
+            </div>
+         </div>
+
+           
+        </div>
+    </div>
+</div>
+
+
+
