@@ -434,42 +434,5 @@
       "id": 6
     }
   ],
-  "carts": [
-    {
-      "email": "abc@gmail.com",
-      "id": 1,
-      "itemName": "Plain Dosa",
-      "price": 20,
-      "totalPrice": 40,
-      "quntity": "2",
-      "status": "Delivery Pending"
-    },
-    {
-      "email": "abc@gmail.com",
-      "id": 711,
-      "itemName": "10pc Leg Piece Bucket & 4 Dips",
-      "price": 799,
-      "totalPrice": 0,
-      "quntity": 1,
-      "status": "Delivery Pending"
-    },
-    {
-      "email": "abc@gmail.com",
-      "id": 4,
-      "itemName": "Mangalore Bajji",
-      "price": 30,
-      "totalPrice": 60,
-      "quntity": "2",
-      "status": "Delivery Pending"
-    },
-    {
-      "email": "abc@gmail.com",
-      "id": 1565,
-      "itemName": "Pepsi PET",
-      "price": 60,
-      "totalPrice": 120,
-      "quntity": "2",
-      "status": "Delivery Pending"
-    }
-  ]
+  "carts": []
 }

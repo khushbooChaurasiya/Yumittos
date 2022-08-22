@@ -1,5 +1,5 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuService } from '../services/menu.service';
 import { HttpClient } from '@angular/common/http';
@@ -12,7 +12,8 @@ interface CartInfo {
   itemName: String;  
   price:Number;
   totalPrice: number;
-  quntity: String;  
+  quntity: String;
+  vegan:string;  
   status:string;
 }  
 
@@ -35,10 +36,10 @@ export class MenudetailsComponent implements OnInit {
   emailId:any="";
   isUserLoggedIn:boolean=false;
   itemDisplay:any=[];
-  Price:number=0;
-displayDetails :any =[];
+  tPrice:number=0;
+  displayDetails :any =[];
   totalPrice:number =0;
-  qtytotal:any;
+  qtytotal:any =0;
   Pendingstatus :string="";
 
   qty = [
@@ -48,6 +49,7 @@ displayDetails :any =[];
   
 
   constructor(private service:MenuService,private router:ActivatedRoute, private httpClient: HttpClient, private ser : LoginService, private route:Router ) { }
+  @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
   
     ngOnInit() {
       this.getMenuInfo();
@@ -67,7 +69,6 @@ displayDetails :any =[];
       this.menulist =this.products.map((item: { category: any; })=>item.category);
       if(this.menulist.includes(param['titlename'])){
       this.ProductTitleName=param['titlename'];
-      
         for(var index = 0;  index<this.products.length; index++)
         {
           if(this.products[index].title=this.ProductTitleName)
@@ -91,13 +92,15 @@ displayDetails :any =[];
       $(".page-footer").css("display","none");
       var parameterData="";
       this.service.getProduct().subscribe((data)=>{
-        this.Totalprice = 0;
+        this.tPrice = 0;
+        this.qtytotal = 0;
         this.products=data;
 
         this.finalproduct = this.products.filter((x: { category: any; })=> x.category == this.ProductTitleName);
         this.ItemDetails =this.finalproduct.find((a: { items: any; })=>a.items).items.filter((y: { itemName: any; })=>y.itemName == product);
         this.Subtotal = this.Subtotal +1;
         this.Totalprice = this.Totalprice + this.ItemDetails[0].price;
+        this.tPrice = this.Totalprice;
         var emailid = localStorage.getItem("email");
         debugger;
         if(emailid != null && emailid != "" && emailid != undefined)
@@ -114,13 +117,11 @@ displayDetails :any =[];
           price : this.ItemDetails[0].price,
           totalPrice: 0,
           quntity: 1,
+          vegan:this.ItemDetails[0].vegan,
           status:this.Pendingstatus
         }
-        
-    this.itemDisplay.push(jsonData);
-    this.service.postCartsDetaild(jsonData).subscribe((data)=>{
-      debugger;
-     console.log(data);
+      this.itemDisplay.push(jsonData);
+      this.service.postCartsDetaild(jsonData).subscribe((data)=>{
     });
 
   });     
@@ -131,12 +132,11 @@ displayDetails :any =[];
     this.selected = e.target.value;
     this.qtytotal=this.selected;
     
-    this.Price = 0;
-    this.Price += a.price* this.qtytotal
+    this.tPrice = 0;
+    this.tPrice += a.price* this.qtytotal
 
     this.service.getCartDetailsById(a.id).subscribe((data)=>{
       var emailid = localStorage.getItem("email");
-debugger;
       if(emailid != null && emailid != "" && emailid != undefined)
       {
         this.Pendingstatus = "Delivery Pending";
@@ -149,14 +149,14 @@ debugger;
           id:a.id,
           itemName: a.itemName,
           price : a.price,
-          totalPrice : this.Price,
+          totalPrice : this.tPrice,
           quntity: this.selected,
-          status:"pending"
+          vegan:a.vegan,
+          status:this.Pendingstatus
       }
 
       this.service.cartDelete(a.id).subscribe((res)=>{
         this.service.postCartsDetaild(updateJsonData).subscribe((response)=>{
-         console.log(response);
         });
       });
 
@@ -167,7 +167,7 @@ debugger;
   DeleteCart(Id:string){
     this.service.cartDelete(Id)
     .subscribe(data=>{
-      console.log(data);
+      this.inputDataChange.emit(true); 
     })
   }
 

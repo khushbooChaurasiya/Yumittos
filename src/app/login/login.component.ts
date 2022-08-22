@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         this.service.login(this.email,this.password, this.mailid).subscribe((d)=>{
          if(d == true){
             if(this.retUrl!=null){
-              
+
               localStorage.setItem('email', this.email);
               this.sar.getCartDetails().subscribe((cartdata)=>{
                 this.cartPending = cartdata;
@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
                       price : cartInfo.price,
                       totalPrice : cartInfo.quntity * cartInfo.price,
                       quntity: cartInfo.quntity,
+                      vegan:cartInfo.vegan,
                       status:"Delivery Pending"
                   }
                   this.deleteCartDetails(updateJsonData);

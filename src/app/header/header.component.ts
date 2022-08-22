@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import $ from 'jquery';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,10 @@ import $ from 'jquery';
 export class HeaderComponent implements OnInit {
   isUserLoggedIn:any="";
   emailId:any="";
-
-  constructor(private service:LoginService, private route:Router){
+  cartPending:any;
+  cartd:any;
+  orderD:any;
+  constructor(private service:LoginService, private route:Router, private sar: MenuService){
     debugger;
    this.emailId = localStorage.getItem('email');
    if(this.emailId != "" && this.emailId != null)
@@ -28,6 +31,9 @@ export class HeaderComponent implements OnInit {
       $("#divHide").removeAttr("style");
     });
 
+    this.getCartLength();
+
+
 
   }
   
@@ -36,5 +42,18 @@ export class HeaderComponent implements OnInit {
     this.service.logoutUser();
     this.route.navigate(["/home"]);
     this.isUserLoggedIn = false;
+  }
+
+  getCartLength()
+  {
+    this.sar.getCartDetails().subscribe((data)=>
+    {
+      this.cartPending = data;
+
+      var email = localStorage.getItem("email");
+      this.cartd = this.cartPending.filter(((x: { status: string; email: string | null; })=>x.status == "Delivery Pending" && x.email == email));
+      this.orderD = this.cartd.length;
+      
+    });
   }
 }

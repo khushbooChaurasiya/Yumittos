@@ -36,31 +36,29 @@
 
 
 <footer class="text-center text-lg-start bg-light text-muted fixed-bottom" id="cartdetails" style="display: none;">
-  
-
   <div id="collapseExample" style="background-color: rgba(0, 0, 0, 0.05);">   
-    <div class="card" id="addscroll">  
+    <div class="card" id="addscroll"> 
+      <h4>Your Orders</h4>
+      <hr> 
       <div class="card-body row text-center col-md-12" *ngFor="let a of itemDisplay">  
-        <div class="col-md-2"> <p class="card-text">{{a.itemName}}</p></div>
-       <div  class="col-md-2">  <i class="fa fa-inr"></i> {{a.price}}</div>
-         <div  class="col-md-2">   <p class="card-text"> Total : {{Price}}</p></div>
-     
-        <div class="container quantity-spinner-wrap col-md-2">
-          <div class="col-md-12">
+        <div class="col-md-2"> 
+          <p class="card-text" *ngIf="a.vegan == 'Non veg'"><img src="/assets/images/nonveg.png" alt="image" style="width: 20px;">&nbsp;{{a.itemName}}</p>
+          <p class="card-text" *ngIf="a.vegan == 'veg'"><img src="/assets/images/vagitarianLogo.png" alt="image" style="width: 20px;">&nbsp;{{a.itemName}}</p>
+        </div>
+        <div class="col-md-2">
             <div class="input-group number-spinner">
-            <select (change)="update($event, a)">
-                <option value="default">1</option>
-                <option *ngFor="let q of qty" [value]="q">
-                    {{q}}
-                </option>
-            </select>
-      </div>
-    </div>
-    </div>
-
-        <button class="btn btn-danger col-md-1" (click)="DeleteCart(a.id)"><i class="fa fa-trash"></i> Delete</button>
-      </div>  
-      
+              <select (change)="update($event, a)">
+                  <option value="default">1</option>
+                  <option *ngFor="let q of qty" [value]="q">
+                      {{q}}
+                  </option>
+              </select>
+            </div>
+        </div> 
+        <!-- <div  class="col-md-2"><i class="fa fa-inr"></i> {{a.price}}</div>
+        <button class="btn btn-danger col-md-1" (click)="DeleteCart(a.id)"><i class="fa fa-trash" name="deleteTestDetails"></i> Delete</button>  -->
+        <hr>
+      </div>      
     </div>  
   </div>  
   <!-- Copyright -->

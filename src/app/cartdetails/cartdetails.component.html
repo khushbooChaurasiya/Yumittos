@@ -3,14 +3,14 @@
     <div class="row">
         <div class="col-md-6">
             <div class="container" style='height: 100%; width: 100%; object-fit: contain'>
-                <!-- <img src="/assets/images/restaurant.jpg"/> -->
+                <img src="/assets/images/DeliveryMan.png"/>
             </div>
            
         </div>
        <div class="col-md-6 mt-2">
 
             <div class="text-start text-black p-4 border mb-3">
-                <h4 class="" style="color: #35558a;">Thanks For Your Order.WE will reach you soon with your delicious food </h4>
+                <h4 class="" style="color: #35558a;">Thanks For Your Order. We will reach you soon with your delicious food </h4>
             </div>
             
             <div class="text-start text-black p-4 border ex1" >
@@ -41,48 +41,58 @@
 
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                         <h5 class="mb-1">Item Name</h5>
                       </div>
-                      <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                         <h5 class=" mb-1 ">Item Price</h5>
                       </div>
-                      <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                         <h5 class=" mb-1 ">Quantity</h5>
                       </div>
-                      <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                         <h5 class="mb-1 ">Amount</h5>
+                      </div>
+                      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+
                       </div>
                     </div>
 
                     <div class="row mt-3" *ngFor="let d of cartd">
-                        <div class="col-md-3 mb-1 text-center d-flex justify-content-center align-items-center">
+                        <div class="col-md-2 mb-1 text-center d-flex justify-content-center align-items-center">
                           <p class="text-muted mb-0">{{d.itemName}}</p>
                         </div>
-                        <div class="col-md-3 mb-1 text-center d-flex justify-content-center align-items-center">
+                        <div class="col-md-2 mb-1 text-center d-flex justify-content-center align-items-center">
                           <p class="text-muted mb-0 small">{{d.price}}</p>
                         </div>
-                        <div class="col-md-3 mb-1 text-center d-flex justify-content-center align-items-center">
+                        <div class="col-md-2 mb-1 text-center d-flex justify-content-center align-items-center">
                           <p class="text-muted mb-0 small">{{d.quntity}}</p>
                         </div>
-                        <div class="col-md-3 mb-1 text-center d-flex justify-content-center align-items-center">
+                        <div class="col-md-2 mb-1 text-center d-flex justify-content-center align-items-center">
                           <p class="text-muted mb-0 small">{{d.totalPrice}}</p>
+                        </div>
+                        <div class="col-md-3 mb-1 text-center d-flex justify-content-center align-items-center">
+                            <button type="button" class="btn btn-danger col-md-3" title="Delete" (click)="onDeleteCart(d)" name="deleteTestDetails"><i class="fa fa-trash"></i></button>
                         </div>
                     </div>
 
                     <hr>
 
                     <div class="d-flex justify-content-between">
-                        <p class="fw-bold mb-0">Subtotal :</p>
-                        <p class="text-muted mb-0">0</p>
+                        <p class="fw-bold mb-0">Subtotal</p>
+                        <p class="text-muted mb-0">{{subtotal|currency:'INR'}}</p>
                       </div>
                       <div class="d-flex justify-content-between">
-                        <p class="fw-bold mb-0">Delivery Charges :</p>
-                        <p class="text-muted mb-0">0</p>
+                        <p class="fw-bold mb-0">Delivery Charges</p>
+                        <p class="text-muted mb-0">{{discount|currency:'INR'}}</p>
                       </div>
                       <div class="d-flex justify-content-between">
-                        <p class="fw-bold mb-0">Total Amount :</p>
-                        <p class="text-muted mb-0">0</p>
+                        <p class="fw-bold mb-0">Offer Price</p>
+                        <p class="text-muted mb-0">{{offerprice|currency:'INR'}}</p>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <p class="fw-bold mb-0">Total</p>
+                        <p class="text-muted mb-0">{{subtotal+discount|currency:'INR'}}</p>
                       </div>
                    </div>
             </div>
