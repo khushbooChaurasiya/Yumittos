@@ -99,6 +99,13 @@ displayDetails :any =[];
         this.Subtotal = this.Subtotal +1;
         this.Totalprice = this.Totalprice + this.ItemDetails[0].price;
         var emailid = localStorage.getItem("email");
+        if(emailid != null && emailid != "" && emailid != undefined)
+        {
+          this.Pendingstatus = "Delivery Pending";
+        }
+        else{
+          this.Pendingstatus = "pending";
+        }
         var jsonData ={
           email:emailid,
           id:this.ItemDetails[0].id,
@@ -106,7 +113,7 @@ displayDetails :any =[];
           price : this.ItemDetails[0].price,
           totalPrice: 0,
           quntity: 1,
-          status:"pending"
+          status:this.Pendingstatus
         }
         
     this.itemDisplay.push(jsonData);

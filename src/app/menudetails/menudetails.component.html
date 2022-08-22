@@ -49,7 +49,7 @@
           <div class="col-md-12">
             <div class="input-group number-spinner">
             <select (change)="update($event, a)">
-                <option value="default"></option>
+                <option value="default">1</option>
                 <option *ngFor="let q of qty" [value]="q">
                     {{q}}
                 </option>
