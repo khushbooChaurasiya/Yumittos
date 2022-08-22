@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   users:any="";
   mailid: string="";
   error: any;
-  cartPending:any=[];
+  cartPending:any="";
     constructor(private service:LoginService,private route:ActivatedRoute,private router:Router,private fb:FormBuilder, private sar : MenuService) { }
   
     LoginForm=this.fb.group({
@@ -44,27 +44,12 @@ export class LoginComponent implements OnInit {
         this.service.login(this.email,this.password, this.mailid).subscribe((d)=>{
          if(d == true){
             if(this.retUrl!=null){
-              localStorage.setItem('email', this.email);
-            this.sar.getCartDetails().subscribe((cartdata)=>{
-              this.cartPending = cartdata;
-              var cartd = this.cartPending.filter((x: { status: string; })=>x.status == "pending");
+
+            // this.sar.getCartDetails().subscribe((data)=>{
+            //   console.log(data);
+            //   this.cartPending = data;
               
-              for(var i=0; i<cartd.length; i++)
-              {
-                  var cartInfo = cartd[i];
-                  var updateJsonData ={
-                    email: localStorage.getItem('email'),
-                    id:cartInfo.id,
-                    itemName: cartInfo.itemName,
-                    price : cartInfo.price,
-                    totalPrice : cartInfo.quntity * cartInfo.price,
-                    quntity: cartInfo.quntity,
-                    status:"Delivery Pending"
-                }
-                this.deleteCartDetails(updateJsonData);
-                
-             }
-            });
+            // });
 
               this.router.navigate([this.retUrl]);
               
