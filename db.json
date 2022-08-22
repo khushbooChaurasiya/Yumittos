@@ -440,18 +440,18 @@
       "id": 1,
       "itemName": "Plain Dosa",
       "price": 20,
-      "totalPrice": 60,
-      "quntity": "3",
+      "totalPrice": 40,
+      "quntity": "2",
       "status": "Delivery Pending"
     },
     {
-      "email": null,
-      "id": 2,
-      "itemName": "Poori",
-      "price": 30,
-      "totalPrice": 0,
-      "quntity": 1,
-      "status": "pending"
+      "email": "abc@gmail.com",
+      "id": 2100,
+      "itemName": "Caramel Pecan Cheesecake",
+      "price": 200,
+      "totalPrice": 400,
+      "quntity": "2",
+      "status": "Delivery Pending"
     }
   ]
 }

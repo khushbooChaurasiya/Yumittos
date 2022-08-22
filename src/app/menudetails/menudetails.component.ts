@@ -39,6 +39,7 @@ export class MenudetailsComponent implements OnInit {
 displayDetails :any =[];
   totalPrice:number =0;
   qtytotal:any;
+  Pendingstatus :string="";
 
   qty = [
     1,2,3,4,5,6,7,8,9,10
@@ -127,6 +128,14 @@ displayDetails :any =[];
 
     this.service.getCartDetailsById(a.id).subscribe((data)=>{
       var emailid = localStorage.getItem("email");
+
+      if(emailid != null && emailid != "" && emailid != undefined)
+      {
+        this.Pendingstatus = "Delivery Pending";
+      }
+      else{
+        this.Pendingstatus = "pending";
+      }
       var updateJsonData ={
           email:emailid,
           id:a.id,

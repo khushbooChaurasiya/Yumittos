@@ -24,8 +24,8 @@ export class CartdetailsComponent implements OnInit {
       this.cartPending = data;
 
       var email = localStorage.getItem("email");
-      this.cartd = this.cartPending.filter(((x: { status: string; email: string | null; })=>x.status == "pending" && x.email == email));
-this.orderD = this.cartd[0];
+      this.cartd = this.cartPending.filter(((x: { status: string; email: string | null; })=>x.status == "Delivery Pending" && x.email == email));
+      this.orderD = this.cartd[0];
       
     });
   }
