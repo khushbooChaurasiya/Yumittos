@@ -66,16 +66,7 @@
                           <p class="text-muted mb-0 small">{{d.price}}</p>
                         </div>
                         <div class="col-md-2 mb-1 text-center d-flex justify-content-center align-items-center">
-                          <p class="text-muted mb-0 small">
-                           
-                                  <select (change)="update($event, d)">
-                                      <option value="default">{{d.quntity}}</option>
-                                      <option *ngFor="let q of qty" [value]="q">
-                                          {{q}}
-                                      </option>
-                                  </select>
-                                
-                            </p>
+                          <p class="text-muted mb-0 small">{{d.quntity}}</p>
                         </div>
                         <div class="col-md-2 mb-1 text-center d-flex justify-content-center align-items-center">
                           <p class="text-muted mb-0 small">{{d.totalPrice}}</p>
