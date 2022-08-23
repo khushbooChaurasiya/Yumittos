@@ -17,7 +17,7 @@
             <a class="nav-link" routerLink="signup">Sign up</a>
           </li>
           <li class="nav-item" *ngIf="!isUserLoggedIn==false">
-            <a class="nav-link" routerLink="checkout"><i class="fa fa-cart-plus" aria-hidden="true" style="width: 40%; height:40%;">{{orderD}}</i>
+            <a class="nav-link" routerLink="checkout"><i class="fa fa-cart-plus" aria-hidden="true"><span class="badge">{{orderD}}</span></i>
             </a> 
           </li>
           <li class="nav-item">
