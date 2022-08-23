@@ -13,14 +13,8 @@ export class LoginService {
 
   getUser()
   {
-    return this.client.get("http://localhost:3000/users");
+    return this.client.get<any>("http://localhost:3000/users");
   }
-
-  getUserByEamil(email:any)
-  {
-    return this.client.get("http://localhost:3000/users", email);
-  }
-
 
   login(username:string,password:string, mailid:string,){
     this.userName=username;
@@ -28,13 +22,6 @@ export class LoginService {
       this.isLoggedIn=true;
     }
     return of(this.isLoggedIn);
-  }
-
-  isAdminUser():boolean{
-    if(this.userName=='admin'){
-      return true;
-    }
-    return false;
   }
   
   isUserLoggedIn():boolean{

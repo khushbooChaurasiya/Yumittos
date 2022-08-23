@@ -41,6 +41,7 @@ export class MenudetailsComponent implements OnInit {
   totalPrice:number =0;
   qtytotal:any =0;
   Pendingstatus :string="";
+  modChange:any=[];
 
   qty = [
     1,2,3,4,5,6,7,8,9,10
@@ -112,7 +113,7 @@ export class MenudetailsComponent implements OnInit {
           id:this.ItemDetails[0].id,
           itemName: this.ItemDetails[0].itemName,
           price : this.ItemDetails[0].price,
-          totalPrice: 0,
+          totalPrice: this.ItemDetails[0].price,
           quntity: 1,
           vegan:this.ItemDetails[0].vegan,
           status:this.Pendingstatus
@@ -127,6 +128,8 @@ export class MenudetailsComponent implements OnInit {
   update(e:any, a:any){
     this.selected = e.target.value;
     this.qtytotal=this.selected;
+
+    this.Totalprice = a.price* this.qtytotal;
     
     this.tPrice = 0;
     this.tPrice += a.price* this.qtytotal
@@ -150,13 +153,15 @@ export class MenudetailsComponent implements OnInit {
           vegan:a.vegan,
           status:this.Pendingstatus
       }
-
       this.service.cartDelete(a.id).subscribe((res)=>{
         this.service.postCartsDetaild(updateJsonData).subscribe((response)=>{
+          this.getAllCartDataByAmount();
         });
       });
 
     });
+
+    
  
   }
 
@@ -180,4 +185,21 @@ export class MenudetailsComponent implements OnInit {
       this.route.navigate(["login"]);
     }
   }
+
+
+  getAllCartDataByAmount()
+  {
+    debugger;
+    this.Totalprice = 0;
+    this.service.getCartDetails().subscribe((res)=>{
+      for(var i =0; i< this.itemDisplay.length; i++)
+      {
+        var cdatails = res.find((x: { id: any; })=>x.id == this.itemDisplay[i].id);
+        this.Totalprice += cdatails.totalPrice;
+      }
+    })
+
+  }
+  
+
 }

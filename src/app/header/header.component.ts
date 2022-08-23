@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import $ from 'jquery';
 import { MenuService } from '../services/menu.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,16 +11,20 @@ import { MenuService } from '../services/menu.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
   isUserLoggedIn:any="";
   emailId:any="";
   cartPending:any;
   cartd:any;
   orderD:any;
+  userdetails:any;
   constructor(private service:LoginService, private route:Router, private sar: MenuService){
    this.emailId = localStorage.getItem('email');
    if(this.emailId != "" && this.emailId != null)
    {
+    this.getUserbyId(this.emailId);
     this.isUserLoggedIn= true;
+    this.inputDataChange.emit(true); 
    }
 
   }
@@ -33,10 +38,23 @@ export class HeaderComponent implements OnInit {
     this.getCartLength();
   }
 
-  getUserbyId(emailId: string)
+  getUserbyId(emailId: any)
   {
-    this.service.getUserByEamil(this.emailId).subscribe((data)=>
+    this.service.getUser().subscribe((data)=>
     {
+        this.userdetails = data;
+        var alluseremail = this.userdetails.map((item: { mail: any; })=>item.mail);
+        var matchuser = alluseremail.includes(emailId);
+
+        if(matchuser != "" && matchuser!= null && matchuser != undefined)
+        {
+           this.isUserLoggedIn = true;
+        }
+        else{
+          this.isUserLoggedIn = false;
+        }
+
+        return this.isUserLoggedIn;
 
     });
   }

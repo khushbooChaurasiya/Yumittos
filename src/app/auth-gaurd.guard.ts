@@ -8,14 +8,14 @@ import { LoginService } from './services/login.service';
 })
 export class AuthGaurdGuard implements CanActivate {
   constructor(private service:LoginService ,private router:Router){}
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean
-  {
-    if(!this.service.isAdminUser()){
-      alert("You are not admin and not allowed to edit the product");
-      return false;
-    }  
-    return true;
-  }
+  // canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean
+  // {
+  //   if(!this.service.isAdminUser()){
+  //     alert("You are not admin and not allowed to edit the product");
+  //     return false;
+  //   }  
+  //   return true;
+  // }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './services/login.service';
 
@@ -12,7 +12,10 @@ export class AppComponent {
   isUserLoggedIn:any="";
   emailId:any="";
 
+  @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
+
   constructor(private service:LoginService, private route:Router){
+    this.inputDataChange.emit(true); 
     
   }
   

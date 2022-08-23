@@ -16,7 +16,7 @@ export class MenuService {
 
   getCartDetails()
   {
-    return this.client.get("http://localhost:3000/carts");
+    return this.client.get<any>("http://localhost:3000/carts");
   }
 
   getCartDetailsById(Id:any)

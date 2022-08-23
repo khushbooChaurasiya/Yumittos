@@ -10,7 +10,7 @@ import { LoginService } from '../services/login.service';
 })
 export class ContactusComponent implements OnInit {
 
-  fname:any="";
+fname:any="";
 lname:any="";
 subject:any="";
   constructor(private service:LoginService,private router:Router,private fb:FormBuilder) { }

@@ -392,7 +392,7 @@
   ],
   "users": [
     {
-      "name":"abc",
+      "name": "abc",
       "mail": "abc@gmail.com",
       "psd": "123",
       "addr": "anjani-baba,546,guty",
@@ -400,7 +400,7 @@
       "id": 1
     },
     {
-      "name":"123",
+      "name": "123",
       "mail": "123@gmail.com",
       "psd": "456",
       "addr": "markoni-damishu",
@@ -408,7 +408,7 @@
       "loggedIn": true
     },
     {
-      "name":"khushboo",
+      "name": "khushboo",
       "mail": "khushboo@gmail.com",
       "psd": "123456",
       "addr": "Ankleshwar",
@@ -416,7 +416,7 @@
       "id": 3
     },
     {
-      "name":"khushi",
+      "name": "khushi",
       "mail": "khushi@gmail.com",
       "psd": "1234",
       "addr": "Gujarat",
@@ -424,7 +424,7 @@
       "id": 4
     },
     {
-      "name":"abcd",
+      "name": "abcd",
       "mail": "abcd@gmail.com",
       "psd": "Dongirl@1996",
       "addr": "surat",
@@ -432,7 +432,7 @@
       "id": 5
     },
     {
-      "name":"kh",
+      "name": "kh",
       "mail": "kh@gmail.com",
       "psd": "123",
       "addr": "surat",
@@ -443,11 +443,21 @@
   "carts": [
     {
       "email": "abc@gmail.com",
-      "id": 1,
-      "itemName": "Plain Dosa",
-      "price": 20,
-      "totalPrice": 60,
+      "id": 1560,
+      "itemName": "1 Double Down Burger",
+      "price": 249,
+      "totalPrice": 747,
       "quntity": "3",
+      "vegan": "Non veg",
+      "status": "Delivery Pending"
+    },
+    {
+      "email": "abc@gmail.com",
+      "id": 1565,
+      "itemName": "Pepsi PET",
+      "price": 60,
+      "totalPrice": 120,
+      "quntity": "2",
       "vegan": "veg",
       "status": "Delivery Pending"
     }

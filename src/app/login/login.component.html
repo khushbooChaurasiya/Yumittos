@@ -21,7 +21,7 @@
       
               <div class="card bg-glass">
                 <div class="card-body px-4 py-5 px-md-5">
-              <form [formGroup]="LoginForm">
+              <form [formGroup]="LoginForm" (ngSubmit)="onLogin()">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example3">Email address</label>
@@ -45,7 +45,7 @@
                 </div>
       
                 <div class="text-center text-lg-start mt-4 pt-2">
-                  <button type="submit" class="btn btn-primary btn-block mb-4" (click)="onLogin()">
+                  <button type="submit" class="btn btn-primary btn-block mb-4">
                     Login
                   </button>
                   <!-- <button type="button" class="btn btn-primary btn-lg"
