@@ -37,7 +37,6 @@ export class CartdetailsComponent implements OnInit {
 
   countsubtotal()
   {
-    debugger;
     this.service.getCartDetails().subscribe((data)=>
     {
       this.cartPending = data;
@@ -54,7 +53,6 @@ export class CartdetailsComponent implements OnInit {
   }
   onDeleteCart(d:any)
   {
-    debugger;
     this.service.cartDelete(d.id)
     .subscribe(data=>{
       this.inputDataChange.emit(true); 

@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
   cartd:any;
   orderD:any;
   constructor(private service:LoginService, private route:Router, private sar: MenuService){
-    debugger;
    this.emailId = localStorage.getItem('email');
    if(this.emailId != "" && this.emailId != null)
    {
@@ -32,9 +31,14 @@ export class HeaderComponent implements OnInit {
     });
 
     this.getCartLength();
+  }
 
+  getUserbyId(emailId: string)
+  {
+    this.service.getUserByEamil(this.emailId).subscribe((data)=>
+    {
 
-
+    });
   }
   
   Logout(){

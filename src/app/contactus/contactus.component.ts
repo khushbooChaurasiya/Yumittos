@@ -26,7 +26,6 @@ subject:any="";
 
   onContactUs()
   {
-    debugger;
     var body ={
       fname:this.contactusForm.get("fname")?.value,
       lname:this.contactusForm.get("lname")?.value,

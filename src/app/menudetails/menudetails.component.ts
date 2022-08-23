@@ -61,7 +61,6 @@ export class MenudetailsComponent implements OnInit {
   }
   getMenuInfo()
   {
-    debugger;
     var parameterData="";
     this.service.getProduct().subscribe((data)=>{
       this.products=data;
@@ -87,7 +86,6 @@ export class MenudetailsComponent implements OnInit {
   }
   AddCart(product:any)
   {
-      debugger;
       $("#cartdetails").removeAttr("style");
       $(".page-footer").css("display","none");
       var parameterData="";
@@ -102,7 +100,6 @@ export class MenudetailsComponent implements OnInit {
         this.Totalprice = this.Totalprice + this.ItemDetails[0].price;
         this.tPrice = this.Totalprice;
         var emailid = localStorage.getItem("email");
-        debugger;
         if(emailid != null && emailid != "" && emailid != undefined)
         {
           this.Pendingstatus = "Delivery Pending";
@@ -128,7 +125,6 @@ export class MenudetailsComponent implements OnInit {
   }
 
   update(e:any, a:any){
-    debugger;
     this.selected = e.target.value;
     this.qtytotal=this.selected;
     

@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
     }
 
     onLogin(){
-    debugger;
       this.service.getUser().subscribe((data)=>{
         this.users = data;
        this.mailid= this.users.map((item: { mail: any; })=>item.mail);

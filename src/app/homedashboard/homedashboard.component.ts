@@ -16,9 +16,7 @@ constructor(private service:MenuService) { }
 
 ngOnInit(): void {
   this.service.getProduct().subscribe((data)=>{
-    debugger;
     this.products=data;
-    debugger;
     this.menulist =this.products.map((item: { category: any; })=>item.category);
     
   });
@@ -26,7 +24,6 @@ ngOnInit(): void {
 
   onSelect(p:any)
   {
-    debugger;
     this.isSelect = true;
     this.service.getProduct().subscribe((data)=>{
       this.products=data;

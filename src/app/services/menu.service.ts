@@ -31,7 +31,6 @@ export class MenuService {
 
   updateCartDetails(cartdata:any)
   {
-    debugger;
     return this.client.put("http://localhost:3000/carts",cartdata);
   }
 
@@ -42,7 +41,6 @@ export class MenuService {
   // }
 
   cartDelete (Id:String):Observable<number>{
-    debugger;
     let httpheaders=new HttpHeaders()
     .set('Content-type','application/Json');
     let options={

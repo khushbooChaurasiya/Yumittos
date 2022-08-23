@@ -392,6 +392,7 @@
   ],
   "users": [
     {
+      "name":"abc",
       "mail": "abc@gmail.com",
       "psd": "123",
       "addr": "anjani-baba,546,guty",
@@ -399,6 +400,7 @@
       "id": 1
     },
     {
+      "name":"123",
       "mail": "123@gmail.com",
       "psd": "456",
       "addr": "markoni-damishu",
@@ -406,6 +408,7 @@
       "loggedIn": true
     },
     {
+      "name":"khushboo",
       "mail": "khushboo@gmail.com",
       "psd": "123456",
       "addr": "Ankleshwar",
@@ -413,6 +416,7 @@
       "id": 3
     },
     {
+      "name":"khushi",
       "mail": "khushi@gmail.com",
       "psd": "1234",
       "addr": "Gujarat",
@@ -420,6 +424,7 @@
       "id": 4
     },
     {
+      "name":"abcd",
       "mail": "abcd@gmail.com",
       "psd": "Dongirl@1996",
       "addr": "surat",
@@ -427,6 +432,7 @@
       "id": 5
     },
     {
+      "name":"kh",
       "mail": "kh@gmail.com",
       "psd": "123",
       "addr": "surat",
@@ -434,7 +440,18 @@
       "id": 6
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "email": "abc@gmail.com",
+      "id": 1,
+      "itemName": "Plain Dosa",
+      "price": 20,
+      "totalPrice": 60,
+      "quntity": "3",
+      "vegan": "veg",
+      "status": "Delivery Pending"
+    }
+  ],
   "contactus": [
     {
       "fname": "khushboo",

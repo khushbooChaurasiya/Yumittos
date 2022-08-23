@@ -17,6 +17,13 @@
               <form [formGroup]="registrationForm">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
+
+                  <div class="form-outline mb-3">
+                    <label class="form-label" for="form3Example4">Username</label>
+                      <input type="email" formControlName="name" [(ngModel)]="name" name="name" required class="form-control form-control-lg"
+                        placeholder="Enter username" />
+                     
+                    </div>
                   
                   <div class="form-outline mb-3">
                     <label class="form-label" for="form3Example4">Email Address</label>

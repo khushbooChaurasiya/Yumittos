@@ -12,6 +12,7 @@ export class RegistrationComponent implements OnInit {
 address:any="";
 password:any="";
 email:any="";
+name:any="";
 
 constructor(private service:LoginService,private router:Router,private fb:FormBuilder) { }
 
@@ -21,21 +22,21 @@ constructor(private service:LoginService,private router:Router,private fb:FormBu
   registrationForm=this.fb.group({
     email:["",[Validators.required,Validators.minLength]],
     password: ["",[Validators.required]],
-    address:["",[Validators.required]]
+    address:["",[Validators.required]],
+    name:["",[Validators.required]]
   })
 
 
   onRegister()
   {
-    debugger;
     var body ={
       mail:this.registrationForm.get("email")?.value,
       psd:this.registrationForm.get("password")?.value,
       addr:this.registrationForm.get("address")?.value,
+      name:this.registrationForm.get("name")?.value,
       loggedIn:true
     }
     this.service.registration(body).subscribe((data)=>{
-      debugger;
       alert("Registration sucessfully");
       this.router.navigate(["login"]);
     })

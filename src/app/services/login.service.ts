@@ -13,12 +13,16 @@ export class LoginService {
 
   getUser()
   {
-    debugger;
     return this.client.get("http://localhost:3000/users");
   }
 
+  getUserByEamil(email:any)
+  {
+    return this.client.get("http://localhost:3000/users", email);
+  }
+
+
   login(username:string,password:string, mailid:string,){
-    debugger;
     this.userName=username;
     if(mailid.includes(this.userName)){
       this.isLoggedIn=true;
@@ -34,7 +38,6 @@ export class LoginService {
   }
   
   isUserLoggedIn():boolean{
-    debugger;
     return this.isLoggedIn;
   }
 
@@ -45,7 +48,6 @@ export class LoginService {
 
   registration(body:any)
   {
-    debugger;
     return this.client.post("http://localhost:3000/users",body);
   }
 
