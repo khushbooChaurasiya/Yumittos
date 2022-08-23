@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,6 +11,7 @@ import { MenuService } from '../services/menu.service';
   styles:[`input.ng-valid{border:1px solid green}`]
 })
 export class LoginComponent implements OnInit {
+  @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
   email:any="";
   password:any="";
   retUrl:any="home";
@@ -69,6 +70,7 @@ export class LoginComponent implements OnInit {
               });
 
               this.router.navigate([this.retUrl]);
+              this.inputDataChange.emit(true); 
               
             }
             else{

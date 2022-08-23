@@ -7,14 +7,16 @@
         <img src="/assets/images/restaurant.jpg" style="width:100%; height: 100%;">
       </div>
       <div class="column">
-        <form action="/action_page.php">
+        <form [formGroup]="contactusForm">
           <label for="fname">First Name</label>
-          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+          <input type="text" formControlName="fname" [(ngModel)]="fname" id="fname" name="firstname" placeholder="Your name..">
           <label for="lname">Last Name</label>
-          <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+          <input type="text" id="lname" formControlName="lname" [(ngModel)]="lname" name="lastname" placeholder="Your last name..">
           <label for="subject">Subject</label>
-          <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
-          <input type="submit" value="Submit">
+          <textarea id="subject" name="subject" formControlName="subject" [(ngModel)]="subject" name="lastname" placeholder="Write something.." style="height:170px"></textarea>
+          <button type="submit" class="btn btn-primary btn-block mb-4" (click)="onContactUs()">
+            Submit
+          </button>
         </form>
       </div>
     </div>

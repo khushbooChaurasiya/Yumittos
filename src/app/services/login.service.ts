@@ -48,5 +48,10 @@ export class LoginService {
     debugger;
     return this.client.post("http://localhost:3000/users",body);
   }
+
+  postContactUs(body:any)
+  {
+    return this.client.post("http://localhost:3000/contactus",body);
+  }
   
 }
