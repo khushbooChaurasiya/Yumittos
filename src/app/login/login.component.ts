@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
       this.service.getUser().subscribe((res)=>{
       const user = res.find((a:any)=>{
       localStorage.setItem("email", a.mail);
+      localStorage.setItem("username", a.name);
       var d =  a.mail === this.LoginForm.value.email && a.psd === this.LoginForm.value.password;
         return d;
       });
@@ -53,6 +54,8 @@ export class LoginComponent implements OnInit {
                 totalPrice : cartInfo.quntity * cartInfo.price,
                 quntity: cartInfo.quntity,
                 vegan:cartInfo.vegan,
+                PaymentMode:"Cash",
+                DeviveryTo:localStorage.getItem('username'),
                 status:"Delivery Pending"
             }
             this.deleteCartDetails(updateJsonData);
@@ -66,6 +69,7 @@ export class LoginComponent implements OnInit {
       else
       {
         localStorage.removeItem("email");
+        localStorage.removeItem("username");
         alert("Invalid email and password");
       }
       });

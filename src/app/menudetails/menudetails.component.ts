@@ -101,6 +101,7 @@ export class MenudetailsComponent implements OnInit {
         this.Totalprice = this.Totalprice + this.ItemDetails[0].price;
         this.tPrice = this.Totalprice;
         var emailid = localStorage.getItem("email");
+        var username = localStorage.getItem("username");
         if(emailid != null && emailid != "" && emailid != undefined)
         {
           this.Pendingstatus = "Delivery Pending";
@@ -116,6 +117,8 @@ export class MenudetailsComponent implements OnInit {
           totalPrice: this.ItemDetails[0].price,
           quntity: 1,
           vegan:this.ItemDetails[0].vegan,
+          PaymentMode:"Cash",
+          DeviveryTo:username,
           status:this.Pendingstatus
         }
       this.itemDisplay.push(jsonData);
@@ -136,6 +139,7 @@ export class MenudetailsComponent implements OnInit {
 
     this.service.getCartDetailsById(a.id).subscribe((data)=>{
       var emailid = localStorage.getItem("email");
+      var username = localStorage.getItem("username");
       if(emailid != null && emailid != "" && emailid != undefined)
       {
         this.Pendingstatus = "Delivery Pending";
@@ -143,6 +147,7 @@ export class MenudetailsComponent implements OnInit {
       else{
         this.Pendingstatus = "pending";
       }
+     
       var updateJsonData ={
           email:emailid,
           id:a.id,
@@ -151,6 +156,8 @@ export class MenudetailsComponent implements OnInit {
           totalPrice : this.tPrice,
           quntity: this.selected,
           vegan:a.vegan,
+          PaymentMode:"Cash",
+          DeviveryTo:username,
           status:this.Pendingstatus
       }
       this.service.cartDelete(a.id).subscribe((res)=>{
