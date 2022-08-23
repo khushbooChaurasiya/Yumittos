@@ -38,14 +38,17 @@
 <footer class="text-center text-lg-start bg-light text-muted fixed-bottom" id="cartdetails" style="display: none;">
   <div id="collapseExample" style="background-color: rgba(0, 0, 0, 0.05);">   
     <div class="card" id="addscroll"> 
-      <h4>Your Orders</h4>
-      <hr> 
-      <div class="card-body row text-center col-md-12" *ngFor="let a of itemDisplay">  
-        <div class="col-md-2"> 
-          <p class="card-text" *ngIf="a.vegan == 'Non veg'"><img src="/assets/images/nonveg.png" alt="image" style="width: 20px;">&nbsp;{{a.itemName}}</p>
-          <p class="card-text" *ngIf="a.vegan == 'veg'"><img src="/assets/images/vagitarianLogo.png" alt="image" style="width: 20px;">&nbsp;{{a.itemName}}</p>
+      <h4 class=" ml-3 mt-3">Your Orders</h4>
+      <div class="card-body row  col-md-12 mb-2" *ngFor="let a of itemDisplay">  
+        <div class="col-md-1">
+          <p class="card-text" *ngIf="a.vegan == 'Non veg'"><img src="/assets/images/nonveg.png" alt="image" style="width: 20px;"></p>
+          <p class="card-text" *ngIf="a.vegan == 'veg'"><img src="/assets/images/vagitarianLogo.png" alt="image" style="width: 20px;"></p>
+
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2"> 
+          <p class="card-text">{{a.itemName}}</p>
+        </div>
+        <div class="col-md-3  ">
             <div class="input-group number-spinner">
               <select (change)="update($event, a)">
                   <option value="default">1</option>
@@ -56,8 +59,6 @@
             </div>
         </div> 
          <div  class="col-md-2"><i class="fa fa-inr"></i> {{a.price}}</div>
-        <!-- <button class="btn btn-danger col-md-1" (click)="DeleteCart(a.id)"><i class="fa fa-trash" name="deleteTestDetails"></i> Delete</button>  -->
-        
       </div>      
     </div>  
   </div>  
