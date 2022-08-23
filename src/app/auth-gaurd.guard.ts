@@ -20,11 +20,11 @@ export class AuthGaurdGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
 
-  if(!this.service.isUserLoggedIn()){
-    alert("You are not logged in to view the page");
-    this.router.navigate(["login"],{queryParams:{retUrl:route.url}});
-    return false;
-  }
+  // if(!this.service.isUserLoggedIn()){
+  //   alert("You are not logged in to view the page");
+  //   this.router.navigate(["login"],{queryParams:{retUrl:route.url}});
+  //   return false;
+  // }
     return true;
   }
  
