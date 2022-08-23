@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
          }
         });
 
-
+        this.service.isUserLoggedIn.next(true);
         this.router.navigate(["home"]);
       }
       else

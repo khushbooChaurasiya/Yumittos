@@ -12,13 +12,18 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
-  isUserLoggedIn:any="";
   emailId:any="";
   cartPending:any;
   cartd:any;
   orderD:any;
   userdetails:any;
+  userName:any;
+
+  isUserLoggedIn: boolean =false;
   constructor(private service:LoginService, private route:Router, private sar: MenuService){
+    this.service.isUserLoggedIn.subscribe( value => {
+      this.isUserLoggedIn = value;
+  });
    this.emailId = localStorage.getItem('email');
    if(this.emailId != "" && this.emailId != null)
    {
@@ -48,6 +53,7 @@ export class HeaderComponent implements OnInit {
 
         if(matchuser != "" && matchuser!= null && matchuser != undefined)
         {
+          this.userName = localStorage.getItem("username");
            this.isUserLoggedIn = true;
         }
         else{

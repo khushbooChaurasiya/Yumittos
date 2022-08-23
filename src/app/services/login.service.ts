@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,8 @@ export class LoginService {
   userName:string="";
   users: any;
   constructor(private client:HttpClient) { }
+
+  public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   getUser()
   {
@@ -24,9 +26,9 @@ export class LoginService {
     return of(this.isLoggedIn);
   }
   
-  isUserLoggedIn():boolean{
-    return this.isLoggedIn;
-  }
+  // isUserLoggedIn():boolean{
+  //   return this.isLoggedIn;
+  // }
 
   logoutUser():void{
     this.isLoggedIn=false;
