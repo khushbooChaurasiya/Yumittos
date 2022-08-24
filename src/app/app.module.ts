@@ -14,7 +14,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { CartdetailsComponent } from './cartdetails/cartdetails.component';
-import { MaterialModule } from './material/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
@@ -39,7 +38,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,    
   ],
   providers: [],
   bootstrap: [AppComponent],
