@@ -30,9 +30,6 @@ const routes: Routes = [
   },
  ]
 },
-// {
-// path:"fooddetails/:titlename", component:FoodDetailsComponent
-// },
 {
 path:"contactus", component:ContactusComponent
 },

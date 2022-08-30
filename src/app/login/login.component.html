@@ -28,7 +28,7 @@
                   <input type="email" formControlName="email" [(ngModel)]="email" name="email" required class="form-control form-control-lg"
                     placeholder="Enter a valid email address" />
                   
-                  <div *ngIf="LoginForm.controls['email'].invalid && LoginForm.controls['email'].touched">
+                  <div *ngIf="LoginForm.controls['email'].invalid && LoginForm.controls['email'].touched" class="alert alert-danger">
                         <small class="errormsg" *ngIf="LoginForm.controls['email'].errors?.['required']">Please enter email</small>
                     </div>
                 </div>
@@ -39,8 +39,8 @@
                 <label class="form-label" for="form3Example4">Password</label>
                   <input type="password" formControlName="password" [(ngModel)]="password" name="password" required class="form-control form-control-lg"
                     placeholder="Enter password" />
-                  <div *ngIf="LoginForm.controls['password'].invalid && LoginForm.controls['password'].touched">
-                        <small class="errormsg" *ngIf="LoginForm.controls['password'].errors?.['required']">Password must contain more than 8 characters, 1 upper case letter, and 1 special character</small>
+                  <div *ngIf="LoginForm.controls['password'].invalid && LoginForm.controls['password'].touched" class="alert alert-danger">
+                        <small class="errormsg" *ngIf="LoginForm.controls['password'].errors?.['required']">Please enter password</small>
                     </div>
                 </div>
       
